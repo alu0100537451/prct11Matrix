@@ -24,15 +24,22 @@ class Matrices
                                 if other.instance_of?Densa
                                         
                                         0.upto(@filas-1) do |i| #for i in (0...@filas.to_i)
-                                             0.upto(@columnas-1) do |j| #for j in (0...@columnas.to_i)
-                                                        temp.matriz[i][j] = (self.matriz[i][j]) + (other.matriz[i][j])
-                                                end
+                                             ##0.upto(@columnas-1) do |j| #for j in (0...@columnas.to_i)
+					   j=0
+				          (0..(@columnas-1)).collect {
+                                                     temp.matriz[i][j] = (self.matriz[i][j]) + (other.matriz[i][j])
+					              j+=1;
+                                                ##end
+					      }
                                         end
                                 end
 
                                 if other.instance_of?Dispersa
-                                        for i in (0...@filas.to_i)
-                                                for j in (0...@columnas.to_i)
+                                       
+				        0.upto(@filas-1) do |i| ## for i in (0...@filas.to_i)
+                                                
+					      j=0
+						(0..(@columnas-1)).collect { ##for j in (0...@columnas.to_i)
                                                         encontrado = 0
                                                         for k in (0...other.posx.size)
                                                                 if (i==other.posx[k] and j==other.posy[k] and encontrado==0)
@@ -43,7 +50,9 @@ class Matrices
                                                         if (encontrado == 0)
                                                                 temp.matriz[i][j] = self.matriz[i][j]
                                                         end
-                                                end
+						      j+= 1
+						}
+                                                ##end
                                         end
                                 end
                         end
@@ -52,8 +61,8 @@ class Matrices
                         if self.instance_of?Dispersa
                                 if other.instance_of?Densa
                                         temp = Densa.new(self.filas, self.columnas, nil)
-                                        for i in (0...@filas.to_i)
-                                                for j in (0...@columnas.to_i)
+                                        0.upto(@filas-1) do |i| ##for i in (0...@filas.to_i)
+                                                0.upto(@columnas-1) do |j|##for j in (0...@columnas.to_i)
                                                         encontrado = 0
                                                         for k in (0...self.posx.size.to_i)
                                                                 if (i==self.posx[k] and j==self.posy[k] and encontrado==0)
@@ -123,8 +132,8 @@ def *(other)
 			  #0.upto(@filas-1) do |i| #for i in (0...@filas.to_i)			      
                                             #0.upto(@columnas-1) do |j| #for j in (0...@columnas.to_i)					      
 			  disptodens = Densa.new(self.filas,other.columnas,[0,0,0,0,0,0,0,0,0])
-			  for i in (0...@filas.to_i)
-                                                for j in (0...@columnas.to_i)
+			              @filas.times do |i|##for i in (0...@filas.to_i)
+                                            @columnas.times do |j|##for j in (0...@columnas.to_i)
                                                         encontrado = 0
                                                         for k in (0...other.posx.size)
 							  if (i==other.posx[k] and j==other.posy[k] and encontrado==0)
@@ -157,8 +166,8 @@ def *(other)
 		    ###########################DISPERSA*DISPERSA#####################################
 		    ##1
 		    disptodens = Densa.new(self.filas,other.columnas,[0,0,0,0,0,0,0,0,0])
-			  for i in (0...@filas.to_i)
-                                                for j in (0...@columnas.to_i)
+			  @filas.times do |i|##for i in (0...@filas.to_i)
+                                          @columnas.times do |j|##for j in (0...@columnas.to_i)
                                                         encontrado = 0
                                                         for k in (0...other.posx.size)
 							  if (i==other.posx[k] and j==other.posy[k] and encontrado==0)
@@ -173,8 +182,8 @@ def *(other)
 			  end
 		    ##2
 			  disptodens2 = Densa.new(other.filas,self.columnas,[0,0,0,0,0,0,0,0,0])
-			  for i in (0...@filas.to_i)
-                                                for j in (0...@columnas.to_i)
+			       @filas.times do |i|##for i in (0...@filas.to_i)
+                                               @columnas.times do |j|##for j in (0...@columnas.to_i)
                                                         encontrado = 0
                                                         for k in (0...self.posx.size)
 							  if (i==self.posx[k] and j==self.posy[k] and encontrado==0)
@@ -201,8 +210,8 @@ def *(other)
 		  if other.instance_of?Densa
 		    ###########################DISPERSA*DENSA#####################################
 		    disptodens = Densa.new(other.filas,self.columnas,[0,0,0,0,0,0,0,0,0])
-			  for i in (0...@filas.to_i)
-                                                for j in (0...@columnas.to_i)
+			 @filas.times do |i|## for i in (0...@filas.to_i)
+                                            @columnas.times do |j|##for j in (0...@columnas.to_i)
                                                         encontrado = 0
                                                         for k in (0...self.posx.size)
 							  if (i==self.posx[k] and j==self.posy[k] and encontrado==0)
