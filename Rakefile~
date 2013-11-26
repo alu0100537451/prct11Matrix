@@ -1,5 +1,3 @@
-require "bundler/gem_tasks"
-
 $:.unshift File.dirname(__FILE__) + 'lib'
 $:.unshift './lib', './spec'
 
@@ -11,3 +9,5 @@ desc "Run UniTest Matrices"
 task :test do
    sh "ruby -Ilib -Itest test/tc_Matrices.rb"
 end
+
+
