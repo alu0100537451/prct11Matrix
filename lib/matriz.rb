@@ -1,22 +1,37 @@
+#=matriz.rb
+#
+# Autores:: Aarón José Vera Cerdeña,Jacobo Saavedra Valdes
+#
+# == Este fichero contiene:
+#Las clases que vamos a utilizar para que contienen los métodos 
+#que van a realizar operaciones con matrices densas y dispersas.
+#
 require 'rubygems'
 require 'bundler/setup'
 require 'nokogiri'
 require "../lib/racional.rb"
-
+# === Clase Matrices
+#
+# Definición de la clase _Matrices_ compuesta por
+# * metodo initialize
+# * metodo +(other)
+# * metodo -(other)
+# * metodo *(other)
+#
 class Matrices
         include Comparable
         include Enumerable
 
         attr_accessor :filas, :columnas, :matriz
 
-	def initialize(f, c)
+	def initialize(f, c)#Crea la matriz con las dimensiones especificadas
                 #atributo
                  @filas=f.to_i; #Numero de filas
                  @columnas=c.to_i; #Numero de columnas
         end
 
-#################################################      
-	def +(other) 
+     
+	def +(other)#Método suma para matrices densas y dispersas
 		if(self.filas == other.filas and self.columnas == other.columnas)
                         # SELF Matrices densas
                         if self.instance_of?Densa
@@ -109,7 +124,7 @@ class Matrices
 end		
 end		
 		
-def *(other)
+def *(other)#Método suma para matrices densas y dispersas
 	temp=Densa.new(self.filas,other.columnas,nil)
 
 	
@@ -242,17 +257,10 @@ def *(other)
 						              
 	
 end
-                
-
-	
-	
-	
-	
-##############################################################################
 
 ##############################RESTA###########################################
 
-def -(other)        
+def -(other) #Resta de matrices Densas y Dispersas##       
                 if(self.filas == other.filas and self.columnas == other.columnas)
                         # SELF Matrices densas
                         if self.instance_of?Densa
@@ -336,15 +344,15 @@ def -(other)
         
 end
 
-
-
-
-
-
-
-
-
-
+# === Clase Dispersa
+#
+# Definición de la clase _Dispersa_ compuesta por
+# * metodo initialize
+# * metodo to_s(other)
+# * metodo max(other)
+# * metodo min(other)
+# * método pos
+#
 class Dispersa < Matrices
 attr_accessor :posx, :posy, :valor
         def initialize(f,c,posx, posy, valor)
@@ -394,12 +402,19 @@ attr_accessor :posx, :posy, :valor
         end
 
 end
-
-
+# === Clase Densa 
+#
+# Definición de la clase _Matrices_ compuesta por
+# * metodo initialize
+# * metodo pos(a,b)
+# * metodo to_s
+# * metodo max
+# * metodo min
+#
 class Densa < Matrices
 attr_accessor :matriz
         
-def initialize(f,c,m)
+def initialize(f,c,m)#Estructura de datos de la matriz densa
                 super(f,c)
                 @matriz = Array.new(@filas.to_i){Array.new(@columnas.to_i)}
 
@@ -412,21 +427,19 @@ def initialize(f,c,m)
                          end
                  end
         end
-        # Metodos getter devuelve el valor de una posicion determinada
+        
 
-        def pos(a,b)
+        def pos(a,b)# Metodos getter devuelve el valor de una posicion determinada
                 @matriz[a][b]
         end
         
-        #Metodo que devuelve la matriz en forma de string
-        def to_s
+        
+        def to_s#Metodo que devuelve la matriz en forma de string
                 "#{@matriz}"
         end
 
 
-
-####Traspuesta de una matriz
-        def traspuesta
+        def traspuesta#Método que calcula la traspuesta de una matriz
                 i=0
                 mtrasp = Array.new(@filas) {Array.new(self.columnas)}
                 while i < @filas
@@ -441,8 +454,8 @@ def initialize(f,c,m)
         end
 
 
-####Opuesta de una matriz
-        def opuesta
+
+        def opuesta#Método que calcula el opuesto de una matriz
 
                 i=0
                 mop = Array.new(@filas) {Array.new(self.columnas)}
@@ -458,8 +471,7 @@ def initialize(f,c,m)
 
         end
 
-############Método Mínimo######################################
-      def minimo
+      def minimo#Método que devuelve el elemento menor de la matriz
                 
           min = self.matriz[0][0]                
                 i=0                                                                
@@ -476,8 +488,7 @@ def initialize(f,c,m)
                 return min                
         end        
 
-##############Método Máximo######################################
-       def maximo
+       def maximo#Método que devuelve el elemento mayor de la matriz
                 
            max = self.matriz[0][0]                
                 i = 0                                                                                

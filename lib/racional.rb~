@@ -1,6 +1,31 @@
-require "./lib/gcd.rb"
-
-class Racional############Clase Racional que calcula 
+#=racional.rb
+#
+# Autores:: Aarón José Vera Cerdeña,Jacobo Saavedra Valdes
+#
+# == Este fichero contiene:
+#
+#
+#
+#
+require "../lib/gcd.rb"
+# === Clase Racional
+#
+# Definición de la clase _Racional_ compuesta por
+# * metodo initialize
+# * metodo to_s(other)
+# * metodo +(other)
+# * metodo *(other)
+# * metodo /(other)
+# * metodo num
+# * metodo denom
+# * metodo to_f
+# * metodo abs
+# * metodo %
+# * metodo reciprocal
+# * metodo -@
+# * metodo <=>
+#
+class Racional
 	include Comparable
 
 	def initialize(numerador, denominador)
@@ -9,12 +34,12 @@ class Racional############Clase Racional que calcula
 	end
 	attr_reader :numerador, :denominador
 
-#####String
-	def to_s
+
+	def to_s#Método que devuelve un String
                 "#{@numerador}/#{@denominador}"
         end
-#####Calcular la suma	
-	def +(other)
+	
+	def +(other)#Calcular la suma
                 if (@denominador == other.denominador )
                         nume=@numerador + other.numerador
                         deno=@denominador
@@ -29,8 +54,8 @@ class Racional############Clase Racional que calcula
                 temp = Racional.new(nume/mcd, deno/mcd)
         end
 
-#####Calcular la resta	
-	def -(other)
+
+	def -(other)#Calcular la resta	
                 if (@denominador == other.denominador )
                         nume=@numerador - other.numerador
                         deno=@denominador

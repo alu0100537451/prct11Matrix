@@ -1,3 +1,12 @@
+#=racional_spec.rb
+#
+# Autores:: Aarón José Vera Cerdeña,Jacobo Saavedra Valdes
+#
+# == Este fichero contiene:
+#Las expectativas de las operaciones entre las matrices densas y dispersas.
+#
+#
+#
 require 'rubygems'
 require 'bundler/setup'
 require 'nokogiri'
@@ -6,17 +15,17 @@ require "rspec"
 require "../lib/matriz.rb"
 require "../lib/racional.rb"
 
-describe Matrices do
+describe Matrices do##Aquí creamos las matrices densas y dispersas
   before :each do
-
-    @matrizden1 = Densa.new(3,3,[1,2,3,4,5,6,7,8,9])
+    
+    @matrizden1 = Densa.new(3,3,[1,2,3,4,5,6,7,8,9])##Aquí creamos la matriz densa
     @matrizden2 = Densa.new(3,3,[1,2,3,4,5,6,7,8,9])
 
     
     @matrizfrac1 = Densa.new(3,3,[Racional.new(1,2),Racional.new(1,3),Racional.new(1,4),Racional.new(1,5),Racional.new(1,6),Racional.new(1,7),Racional.new(1,8),Racional.new(1,9),Racional.new(1,10)])
     @matrizfrac2 = Densa.new(3,3,[Racional.new(1,2),Racional.new(2,3),Racional.new(3,4),Racional.new(4,5),Racional.new(5,6),Racional.new(6,7),Racional.new(7,8),Racional.new(8,9),Racional.new(9,10)])
 
-    @matrizdis1 = Dispersa.new(3,3,[0,1,2],[0,1,2],[1,2,3])
+    @matrizdis1 = Dispersa.new(3,3,[0,1,2],[0,1,2],[1,2,3])##Aquí creamos la matriz dispersa
     @matrizdis2 = Dispersa.new(3,3,[0,1,2],[0,1,2],[1,2,3])
 
     
