@@ -1,15 +1,12 @@
-      PRÁCTICA 10
+    PRÁCTICA 11
 ---------------------
 Aarón José Vera Cerdeña 
 
 Jacobo Saavedra Valdés
 
-1.Utilizamos la práctica 9 creamos la gema e implementamos la jerarquía de clases dentro de la misma,
-donde se heredaban las mismas.
-Para diseñar la estructura donde implementar los métodos que hiciesen operaciones entre operaciones
-densas y dispersas.
-2.En la parte Test Unit creamos un fichero tc_Matrices.rb donde realizamos las pruebas unitarias utilizando 
-el comando assert_equal para comprobar las operaciones entre las diferentes matrices.
-3.Rellenar el archivo spec implementando las operaciones entre las matrices.
-4.Implementar los nuevos métodos de máximo y mínimo para comprobar su funcionamiento con las mátrices.
-5.Subir la gema a RubyGems mediante el comando gem push <gema>.
+1.Utilizamos la práctica 10 con la estructura ya creada.
+2.Añadimos a los métodos suma y producto de matrices las funciones upto,times 
+y collect sustituyendolo por los bucles correspondientes.
+3.Comentamos todo el código siguiendo la estructura por niveles que exige el RDOC.
+4.Creamos la segunda version de la gema con las nuevas implementaciones. 
+5.Subimos la gema a RubyGems mediante el comando gem push <gema>.
