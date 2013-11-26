@@ -124,7 +124,7 @@ class Matrices
 end		
 end		
 		
-def *(other)#Método suma para matrices densas y dispersas
+def *(other) #Método producto para matrices densas y dispersas
 	temp=Densa.new(self.filas,other.columnas,nil)
 
 	
@@ -141,121 +141,105 @@ def *(other)#Método suma para matrices densas y dispersas
 				  end
 			  end
 			end
-			if other.instance_of?Dispersa			  
-			  ###########################DENSA*DISPERSA#####################################
-			  ##################Formamos una matriz densa a partir de la dispersa###########			  
-			  #0.upto(@filas-1) do |i| #for i in (0...@filas.to_i)			      
-                                            #0.upto(@columnas-1) do |j| #for j in (0...@columnas.to_i)					      
+			if other.instance_of?Dispersa				      
 			  disptodens = Densa.new(self.filas,other.columnas,[0,0,0,0,0,0,0,0,0])
-			              @filas.times do |i|##for i in (0...@filas.to_i)
-                                            @columnas.times do |j|##for j in (0...@columnas.to_i)
-                                                        encontrado = 0
-                                                        for k in (0...other.posx.size)
-							  if (i==other.posx[k] and j==other.posy[k] and encontrado==0)
-							    disptodens.matriz[i][j] = other.valor[k]							    
-							    #puts other.posx[i]
-							    #puts other.posy[j]
-							    #puts other.valor[k]                                                                								          
-                                                        end                                                        
-							end                                                                                                        
-						end   			
-						
+			  			  
+			  @filas.times do |i| 			  				  
+			    @columnas.times do |j|
+			      encontrado = 0
+			      0.upto(other.posx.size) do |k|		      				
+				if (i==other.posx[k] and j==other.posy[k] and encontrado==0)				
+				  disptodens.matriz[i][j] = other.valor[k]								  
+				end                                                        				
+			      end                                                                                                        				
+			    end   									
 			  end
 						#puts disptodens.to_s
-						
-						self.filas.times do |i|				      
-						  disptodens.columnas.times do |j|				    
-						    temp.matriz[i][j]=0					  
-						    disptodens.columnas.times do |k|						  
-						      temp.matriz[i][j] = temp.matriz[i][j] + (self.matriz[i][k] * disptodens.matriz[k][j])					  
-						    end				  
-						  end			  
-						end
-			  
+									
+			  self.filas.times do |i|				      			
+			    disptodens.columnas.times do |j|				    							      
+			      temp.matriz[i][j]=0					  							      
+			      disptodens.columnas.times do |k|						  				
+				temp.matriz[i][j] = temp.matriz[i][j] + (self.matriz[i][k] * disptodens.matriz[k][j])					  				
+			      end				  				
+			    end			  				
+			  end			  			
 			end		
 		end
 		
-
+		
 		if self.instance_of?Dispersa
 		  if other.instance_of?Dispersa		        
 		    ###########################DISPERSA*DISPERSA#####################################
-		    ##1
-		    disptodens = Densa.new(self.filas,other.columnas,[0,0,0,0,0,0,0,0,0])
-			  @filas.times do |i|##for i in (0...@filas.to_i)
-                                          @columnas.times do |j|##for j in (0...@columnas.to_i)
-                                                        encontrado = 0
-                                                        for k in (0...other.posx.size)
-							  if (i==other.posx[k] and j==other.posy[k] and encontrado==0)
-							    disptodens.matriz[i][j] = other.valor[k]							    
-							    #puts other.posx[i]
-							    #puts other.posy[j]
-							    #puts other.valor[k]                                                                								          
-                                                        end                                                        
-							end                                                                                                        
-						end   			
-						
-			  end
-		    ##2
-			  disptodens2 = Densa.new(other.filas,self.columnas,[0,0,0,0,0,0,0,0,0])
-			       @filas.times do |i|##for i in (0...@filas.to_i)
-                                               @columnas.times do |j|##for j in (0...@columnas.to_i)
-                                                        encontrado = 0
-                                                        for k in (0...self.posx.size)
-							  if (i==self.posx[k] and j==self.posy[k] and encontrado==0)
-							    disptodens2.matriz[i][j] = self.valor[k]							 							    
-                                                        end                                                        
-							end                                                                                                        
-						end   			
-						
-			  end
+		    ##1 dispersa a densa
+		    disptodens = Densa.new(self.filas,other.columnas,[0,0,0,0,0,0,0,0,0])			  		    
+		    @filas.times do |i| 			  				  			
+		      @columnas.times do |j|       
+			encontrado = 0                       
+			0.upto(other.posx.size) do |k|			
+			  if (i==other.posx[k] and j==other.posy[k] and encontrado==0)			
+			    disptodens.matriz[i][j] = other.valor[k]							    
+			  end                                                       			
+			end                                                                                                        			
+		      end   												
+		    end
+		  
+		    ##2 dispersa a densa			
+		    disptodens2 = Densa.new(other.filas,self.columnas,[0,0,0,0,0,0,0,0,0])			
+		    @filas.times do |i| 			  				  			
+		      @columnas.times do |j|       
+			encontrado = 0                       
+			0.upto(self.posx.size) do |k|			
+			  if (i==self.posx[k] and j==self.posy[k] and encontrado==0)			
+			    disptodens2.matriz[i][j] = self.valor[k]							 							                               
+			  end                                                       			
+			end                                                                                                        			
+		      end   												
+		    end
 			  
-			  temp=Densa.new(self.filas, self.columnas,[0,0,0,0,0,0,0,0,0])
-			  puts disptodens.to_s
-			  puts disptodens2.to_s
-			  disptodens.filas.times do |i| 			  
-				  disptodens2.columnas.times do |j|
-				    temp.matriz[i][j]=0
-					  disptodens2.columnas.times do |k|
-						  temp.matriz[i][j] = temp.matriz[i][j] + (disptodens2.matriz[i][k] * disptodens.matriz[k][j])
-					  end
-				  end
-			  end		    
+			
+		    temp=Densa.new(self.filas, self.columnas,[0,0,0,0,0,0,0,0,0])			
+		    puts disptodens.to_s####################################################################			
+		    puts disptodens2.to_s###################################################################			
+		    disptodens.filas.times do |i| 			  			
+		      disptodens2.columnas.times do |j|			
+			temp.matriz[i][j]=0			
+			disptodens2.columnas.times do |k|			
+			  temp.matriz[i][j] = temp.matriz[i][j] + (disptodens2.matriz[i][k] * disptodens.matriz[k][j])			
+			end			
+		      end			
+		    end		    		  
 		  end
 		  
 		  if other.instance_of?Densa
 		    ###########################DISPERSA*DENSA#####################################
-		    disptodens = Densa.new(other.filas,self.columnas,[0,0,0,0,0,0,0,0,0])
-			 @filas.times do |i|## for i in (0...@filas.to_i)
-                                            @columnas.times do |j|##for j in (0...@columnas.to_i)
-                                                        encontrado = 0
-                                                        for k in (0...self.posx.size)
-							  if (i==self.posx[k] and j==self.posy[k] and encontrado==0)
-							    disptodens.matriz[i][j] = self.valor[k]							    				
-                                                        end                                                        
-							end                                                                                                        
-						end   			
-						
-			  end
-			  puts disptodens.to_s
-			  puts other.to_s
-			  temp=Densa.new(self.filas, self.columnas,[0,0,0,0,0,0,0,0,0])
-			  
-			  other.filas.times do |i|				      			
-			    other.columnas.times do |j|				    				
-			      
-			      disptodens.columnas.times do |k|				
-				temp.matriz[i][j] = temp.matriz[i][j] + (disptodens.matriz[i][k] * other.matriz[k][j])
-			      end				  				
-			      		
-			    end			  				
-			  end			  			  		    
-		  
-		  end
-		  
+		    disptodens = Densa.new(other.filas,self.columnas,[0,0,0,0,0,0,0,0,0])			  
+		    @filas.times do |i| 			  				  			
+		      @columnas.times do |j|       
+			encontrado = 0                       
+			0.upto(self.posx.size) do |k|			
+			  if (i==self.posx[k] and j==self.posy[k] and encontrado==0)			
+			    disptodens.matriz[i][j] = self.valor[k]							    				                           
+			  end                                                       			
+			end                                                                                                        			
+		      end   												
+		    end
+			
+		    #puts disptodens.to_s
+			
+		    #puts other.to_s
+			
+		    temp=Densa.new(self.filas, self.columnas,[0,0,0,0,0,0,0,0,0])			
+		    other.filas.times do |i|				      						
+		      other.columnas.times do |j|
+			disptodens.columnas.times do |k|							
+			  temp.matriz[i][j] = temp.matriz[i][j] + (disptodens.matriz[i][k] * other.matriz[k][j])			  
+			end				  													
+		      end			  							
+		    end			  			  		    		  		  
+		  end		  						
 		end
-		temp
-						              
-	
+		temp						              	
 end
 
 ##############################RESTA###########################################
@@ -507,17 +491,17 @@ def initialize(f,c,m)#Estructura de datos de la matriz densa
 end
 
 
-	den1 = Densa.new(3,3,[1,2,3,4,5,6,7,8,9])
-	den2 = Densa.new(3,3,[1,2,3,4,5,6,7,8,9])
-	den3 = Densa.new(3,3,[0,0,0,0,0,0,0,0,0])
-	disp1= Dispersa.new(3,3,[0,1,2],[0,1,2],[4,12,30])
-	disp2= Dispersa.new(3,3,[1,1,2],[0,1,2],[44,16,32])
+	#den1 = Densa.new(3,3,[1,2,3,4,5,6,7,8,9])
+	#den2 = Densa.new(3,3,[1,2,3,4,5,6,7,8,9])
+	#den3 = Densa.new(3,3,[0,0,0,0,0,0,0,0,0])
+	#disp1= Dispersa.new(3,3,[0,1,2],[0,1,2],[4,12,30])
+	#disp2= Dispersa.new(3,3,[1,1,2],[0,1,2],[44,16,32])
 	
 	  #puts den1.to_s
 	  #puts den2.to_s
 
 	
 
-puts "#{(disp1*den1).to_s}"
+#puts "#{(disp1*den1).to_s}"
 
 
