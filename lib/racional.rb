@@ -141,6 +141,10 @@ class Racional
 		else
 			false
 	end
+	
+	def coerce (other)
+		[Racional.new(other,1), self]
+	end
        
 end
 end
