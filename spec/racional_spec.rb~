@@ -112,7 +112,7 @@ describe "Maximo y minimo de matrices densas" do
 	  
 	(@matrizdenprbrac + @matrizdenprb2).to_s.should eq("[[2, 5/2, 6], [8, 10, 12], [14, 16, 18]]")
 	(@matrizdenprb + @matrizdis2).to_s.should eq ("[[2, 2, 3], [4, 7, 6], [7, 8, 19/2]]")
-	(@matrizdis2 + @matrizdenprbrac2).to_s.should eq ("[[2, 2, 3], [4, 7, 6], [7, 8, 1/1]]")
+	(@matrizdis2 + @matrizdenprbrac2).to_s.should eq ("[[2, 1/2, 3], [4, 7, 6], [7, 8, 1/1]]")
     end
 end
 end
