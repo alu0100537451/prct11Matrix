@@ -9,7 +9,7 @@
 require 'rubygems'
 require 'bundler/setup'
 require 'nokogiri'
-require "../lib/racional.rb"
+require "./lib/racional.rb"
 # === Clase Matrices
 #
 # Definición de la clase _Matrices_ compuesta por

@@ -3,8 +3,8 @@
 ###############################################
 
 require "test/unit"
-require "../lib/matriz.rb"
-require "../lib/racional.rb"
+require "./lib/matriz.rb"
+require "./lib/racional.rb"
 
 class TestMatrizDensa < Test::Unit::TestCase
 
