@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>racional.rb~ - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body class="file">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../Gemfile.html">Gemfile</a>
+  
+    <li class="file"><a href="../Gemfile_lock.html">Gemfile.lock</a>
+  
+    <li class="file"><a href="../Gemfile~.html">Gemfile~</a>
+  
+    <li class="file"><a href="../Guardfile.html">Guardfile</a>
+  
+    <li class="file"><a href="../README_md.html">README</a>
+  
+    <li class="file"><a href="../README_md~.html">README.md~</a>
+  
+    <li class="file"><a href="../Rakefile.html">Rakefile</a>
+  
+    <li class="file"><a href="../Rakefile~.html">Rakefile~</a>
+  
+    <li class="file"><a href="../doc/created_rid.html">created.rid</a>
+  
+    <li class="file"><a href="../lib/gcd_rb~.html">gcd.rb~</a>
+  
+    <li class="file"><a href="../lib/matrix_main_rb~.html">matrix_main.rb~</a>
+  
+    <li class="file"><a href="../lib/matriz_rb~.html">matriz.rb~</a>
+  
+    <li class="file"><a href="../lib/racional_rb~.html">racional.rb~</a>
+  
+    <li class="file"><a href="../spec/racional_spec_rb~.html">racional_spec.rb~</a>
+  
+    <li class="file"><a href="../test/tc_Matrices_rb~.html">tc_Matrices.rb~</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../Densa.html">Densa</a>
+  
+    <li><a href="../Dispersa.html">Dispersa</a>
+  
+    <li><a href="../Matrices.html">Matrices</a>
+  
+    <li><a href="../Object.html">Object</a>
+  
+    <li><a href="../Racional.html">Racional</a>
+  
+    <li><a href="../TestMatrizDensa.html">TestMatrizDensa</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<p>#=racional.rb #</p>
+<dl class="rdoc-list note-list"><dt># Autores
+<dd>
+<p>Aarón José Vera Cerdeña,Jacobo Saavedra Valdes</p>
+</dd></dl>
+
+<p># # == Este fichero contiene: # # # # require “../lib/gcd.rb” # ===
+Clase <a href="../Racional.html">Racional</a> # # Definición de la clase
+<em>Racional</em> compuesta por # * metodo initialize # * metodo
+to_s(other) # * metodo +(other) # * metodo *(other) # * metodo /(other) # *
+metodo num # * metodo denom # * metodo to_f # * metodo abs # * metodo % # *
+metodo reciprocal # * metodo -@ # * metodo &lt;=&gt; # class <a
+href="../Racional.html">Racional</a></p>
+
+<pre class="ruby"><span class="ruby-identifier">include</span> <span class="ruby-constant">Comparable</span>
+
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">numerador</span>, <span class="ruby-identifier">denominador</span>)
+        <span class="ruby-ivar">@numerador</span> = <span class="ruby-identifier">numerador</span>
+        <span class="ruby-ivar">@denominador</span> = <span class="ruby-identifier">denominador</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-identifier">attr_reader</span> :<span class="ruby-identifier">numerador</span>, :<span class="ruby-identifier">denominador</span>
+
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span><span class="ruby-comment">#Método que devuelve un String</span>
+        <span class="ruby-node">&quot;#{@numerador}/#{@denominador}&quot;</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">def</span> <span class="ruby-operator">+</span>(<span class="ruby-identifier">other</span>)<span class="ruby-comment">#Calcular la suma</span>
+        <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@denominador</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">denominador</span> )
+                <span class="ruby-identifier">nume</span>=<span class="ruby-ivar">@numerador</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">numerador</span>
+                <span class="ruby-identifier">deno</span>=<span class="ruby-ivar">@denominador</span>
+                <span class="ruby-identifier">mcd</span>=<span class="ruby-identifier">gcd</span>(<span class="ruby-identifier">nume</span>,<span class="ruby-identifier">deno</span>)
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">aux</span>= <span class="ruby-ivar">@denominador</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">denominador</span>
+                <span class="ruby-identifier">nume</span> = ((<span class="ruby-identifier">aux</span> <span class="ruby-operator">/</span> <span class="ruby-ivar">@denominador</span> ) <span class="ruby-operator">*</span> <span class="ruby-ivar">@numerador</span>) <span class="ruby-operator">+</span> ((<span class="ruby-identifier">aux</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">denominador</span> ) <span class="ruby-operator">*</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">numerador</span>)
+                <span class="ruby-identifier">deno</span> = <span class="ruby-ivar">@denominador</span><span class="ruby-operator">*</span><span class="ruby-identifier">other</span>.<span class="ruby-identifier">denominador</span>
+                <span class="ruby-identifier">mcd</span>=<span class="ruby-identifier">gcd</span>(<span class="ruby-identifier">nume</span>,<span class="ruby-identifier">deno</span>)
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-identifier">temp</span> = <span class="ruby-constant">Racional</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">nume</span><span class="ruby-operator">/</span><span class="ruby-identifier">mcd</span>, <span class="ruby-identifier">deno</span><span class="ruby-operator">/</span><span class="ruby-identifier">mcd</span>)
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">def</span> <span class="ruby-operator">-</span>(<span class="ruby-identifier">other</span>)<span class="ruby-comment">#Calcular la resta  </span>
+        <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@denominador</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">denominador</span> )
+                <span class="ruby-identifier">nume</span>=<span class="ruby-ivar">@numerador</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">numerador</span>
+                <span class="ruby-identifier">deno</span>=<span class="ruby-ivar">@denominador</span>
+                <span class="ruby-identifier">mcd</span>=<span class="ruby-identifier">gcd</span>(<span class="ruby-identifier">nume</span>,<span class="ruby-identifier">deno</span>)
+
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">aux</span>= <span class="ruby-ivar">@denominador</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">denominador</span>
+                <span class="ruby-identifier">nume</span> = ((<span class="ruby-identifier">aux</span> <span class="ruby-operator">/</span> <span class="ruby-ivar">@denominador</span> ) <span class="ruby-operator">*</span> <span class="ruby-ivar">@numerador</span>) <span class="ruby-operator">-</span> ((<span class="ruby-identifier">aux</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">denominador</span> ) <span class="ruby-operator">*</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">numerador</span>)
+                <span class="ruby-identifier">deno</span>=<span class="ruby-ivar">@denominador</span><span class="ruby-operator">*</span><span class="ruby-identifier">other</span>.<span class="ruby-identifier">denominador</span>
+                <span class="ruby-identifier">mcd</span>=<span class="ruby-identifier">gcd</span>(<span class="ruby-identifier">nume</span>,<span class="ruby-identifier">deno</span>)
+
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-identifier">temp</span> = <span class="ruby-constant">Racional</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">nume</span><span class="ruby-operator">/</span><span class="ruby-identifier">mcd</span>, <span class="ruby-identifier">deno</span><span class="ruby-operator">/</span><span class="ruby-identifier">mcd</span>)
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>#####Calcular el producto</p>
+
+<pre class="ruby"> <span class="ruby-keyword">def</span> <span class="ruby-operator">*</span> (<span class="ruby-identifier">other</span>)
+        <span class="ruby-identifier">nume</span> = <span class="ruby-ivar">@numerador</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">numerador</span>
+        <span class="ruby-identifier">deno</span> = <span class="ruby-ivar">@denominador</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">denominador</span>
+        <span class="ruby-identifier">mcd</span>=<span class="ruby-identifier">gcd</span>(<span class="ruby-identifier">nume</span>,<span class="ruby-identifier">deno</span>)
+        <span class="ruby-identifier">temp</span> = <span class="ruby-constant">Racional</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">nume</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">mcd</span> ,<span class="ruby-identifier">deno</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">mcd</span> )
+
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>#####Calcular la division</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-operator">/</span> (<span class="ruby-identifier">other</span>)
+
+        <span class="ruby-identifier">nume</span> = <span class="ruby-ivar">@numerador</span> <span class="ruby-operator">*</span><span class="ruby-identifier">other</span>.<span class="ruby-identifier">denominador</span>
+        <span class="ruby-identifier">deno</span> = <span class="ruby-ivar">@denominador</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">numerador</span>
+        <span class="ruby-identifier">mcd</span>= <span class="ruby-identifier">gcd</span>(<span class="ruby-identifier">nume</span>,<span class="ruby-identifier">deno</span>)
+        <span class="ruby-identifier">temp</span> = <span class="ruby-constant">Racional</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">nume</span><span class="ruby-operator">/</span><span class="ruby-identifier">mcd</span>, <span class="ruby-identifier">deno</span><span class="ruby-operator">/</span><span class="ruby-identifier">mcd</span> )
+
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>#####Devolver el numerador</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">num</span> 
+        <span class="ruby-ivar">@numerador</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>#####Devolver el denominador</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">denom</span> 
+        <span class="ruby-ivar">@denominador</span>            
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>#####Flotante</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">to_f</span>
+        <span class="ruby-identifier">flotante</span> = <span class="ruby-identifier">numerador</span>.<span class="ruby-identifier">to_f</span><span class="ruby-operator">/</span><span class="ruby-identifier">denominador</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>#####Calcular el absoluto de la fraccion</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">abs</span>
+        <span class="ruby-identifier">absnum</span> = <span class="ruby-identifier">numerador</span>.<span class="ruby-identifier">abs</span>
+        <span class="ruby-identifier">absdenom</span> = <span class="ruby-identifier">denominador</span>.<span class="ruby-identifier">abs</span>
+        <span class="ruby-identifier">abs</span> = <span class="ruby-constant">Racional</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">absnum</span>, <span class="ruby-identifier">absdenom</span>)
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>#####Calcular el resto</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-operator">%</span> (<span class="ruby-identifier">other</span>)
+        <span class="ruby-identifier">nume</span> = <span class="ruby-ivar">@numerador</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">denominador</span>
+        <span class="ruby-identifier">deno</span> = <span class="ruby-ivar">@denominador</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">numerador</span>
+        <span class="ruby-identifier">mcd</span>  = <span class="ruby-identifier">gcd</span>(<span class="ruby-identifier">nume</span>,<span class="ruby-identifier">deno</span>)
+
+        <span class="ruby-identifier">temp</span> = ((<span class="ruby-identifier">nume</span><span class="ruby-operator">/</span><span class="ruby-identifier">mcd</span>) <span class="ruby-operator">%</span> (<span class="ruby-identifier">deno</span><span class="ruby-operator">/</span><span class="ruby-identifier">mcd</span>))
+
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>#####Calcular el reciproco de la fraccion</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">reciprocal</span>
+        <span class="ruby-constant">Racional</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@denominador</span>,<span class="ruby-ivar">@numerador</span>)
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>#####Calcular el opuesto de la fraccion</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-operator">-@</span>
+        <span class="ruby-identifier">negado</span> = <span class="ruby-constant">Racional</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">-</span><span class="ruby-identifier">denominador</span>, <span class="ruby-identifier">numerador</span>)
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">def</span> <span class="ruby-operator">&lt;=&gt;</span> (<span class="ruby-identifier">other</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">instance_of?</span> <span class="ruby-constant">Racional</span>
+                <span class="ruby-keyword">return</span> (<span class="ruby-identifier">numerador</span>.<span class="ruby-identifier">to_f</span><span class="ruby-operator">/</span><span class="ruby-identifier">denominador</span>)<span class="ruby-operator">&lt;=&gt;</span>(<span class="ruby-identifier">other</span>.<span class="ruby-identifier">numerador</span>.<span class="ruby-identifier">to_f</span><span class="ruby-operator">/</span><span class="ruby-identifier">other</span>.<span class="ruby-identifier">denominador</span>)
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>end end</p>
+
+</div>
+
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
