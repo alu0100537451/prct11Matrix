@@ -7,7 +7,7 @@
 #
 #
 #
-require "./lib/gcd.rb"
+require "../lib/gcd.rb"
 # === Clase Racional
 #
 # Definición de la clase _Racional_ compuesta por
@@ -24,6 +24,7 @@ require "./lib/gcd.rb"
 # * metodo reciprocal
 # * metodo -@
 # * metodo <=>
+# * metodo coerce
 #
 class Racional
 	include Comparable
@@ -40,6 +41,9 @@ class Racional
         end
 	
 	def +(other)#Calcular la suma
+		if other.is_a? Integer
+			other = Racional.new(other,1)	
+		end
                 if (@denominador == other.denominador )
                         nume=@numerador + other.numerador
                         deno=@denominador
@@ -56,6 +60,9 @@ class Racional
 
 
 	def -(other)#Calcular la resta	de un Racional
+	  if other.is_a? Integer		
+	    other = Racional.new(other,1)			
+	  end
                 if (@denominador == other.denominador )
                         nume=@numerador - other.numerador
                         deno=@denominador
@@ -74,7 +81,10 @@ class Racional
         end
 
 
-	 def * (other)#Calcular el producto de un Racional
+	 def * (other)#Calcular el producto de un Racional	   
+	   if other.is_a? Integer			   
+	     other = Racional.new(other,1)				  
+	   end
                 nume = @numerador * other.numerador
                 deno = @denominador * other.denominador
                 mcd=gcd(nume,deno)
@@ -84,6 +94,9 @@ class Racional
 
 #####Calcular la division
         def / (other)
+	  if other.is_a? Integer		
+	    other = Racional.new(other,1)			
+	  end
         
                 nume = @numerador *other.denominador
                 deno = @denominador * other.numerador
@@ -114,6 +127,13 @@ class Racional
 		abs = Racional.new(absnum, absdenom)
 	end
 
+	def coerce(other)
+
+		if other.is_a? Fixnum
+			return [Racional.new(other,1), self]			
+ 		end	
+	end
+
 
 	def % (other)#####Calcular el resto
 		nume = @numerador * other.denominador
@@ -140,11 +160,8 @@ class Racional
 			return (numerador.to_f/denominador)<=>(other.numerador.to_f/other.denominador)
 		else
 			false
-	end
-	
-	def coerce (other)
-		[Racional.new(other,1), self]
-	end
+		end
        
+	
 end
 end

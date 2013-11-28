@@ -1,4 +1,4 @@
-require "./lib/matriz.rb"
+require "../lib/matriz.rb"
 
 	
 =begin

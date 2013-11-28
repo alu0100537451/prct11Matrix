@@ -1,23 +1,6 @@
-#=matriz.rb
-#
-# Autores:: Aarón José Vera Cerdeña,Jacobo Saavedra Valdes
-#
-# == Este fichero contiene:
-#Las clases que vamos a utilizar para que contienen los métodos 
-#que van a realizar operaciones con matrices densas y dispersas.
-#
-require 'rubygems'
-require 'bundler/setup'
-require 'nokogiri'
-require "../lib/racional.rb"
-# === Clase Matrices
-#
-# Definición de la clase _Matrices_ compuesta por
-# * metodo initialize
-# * metodo +(other)
-# * metodo -(other)
-# * metodo *(other)
-#
+require "SparseMatrixProject/version"
+
+module SparseMatrixProject
 class Matrices
         include Comparable
         include Enumerable
@@ -58,7 +41,7 @@ class Matrices
                                                         encontrado = 0
                                                         for k in (0...other.posx.size)
                                                                 if (i==other.posx[k] and j==other.posy[k] and encontrado==0)
-                                                                        temp.matriz[i][j] = (self.matriz[i][j-1]) + (other.valor[k])
+                                                                        temp.matriz[i][j] = (self.matriz[i][j]) + (other.valor[k])
                                                                         encontrado = 1        
                                                                 end
                                                         end
@@ -74,7 +57,7 @@ class Matrices
 
                         # SELF Matriz Dispersa
                         if self.instance_of?Dispersa
-                                if other.instance_of?Densa				  
+                                if other.instance_of?Densa
                                         temp = Densa.new(self.filas, self.columnas, nil)
                                         0.upto(@filas-1) do |i| ##for i in (0...@filas.to_i)
                                                 0.upto(@columnas-1) do |j|##for j in (0...@columnas.to_i)
@@ -488,20 +471,4 @@ def initialize(f,c,m)#Estructura de datos de la matriz densa
                 end                                
           return max                
         end        
-end
-
-
-	#den1 = Densa.new(3,3,[1,2,3,4,5,6,7,8,9])
-	#den2 = Densa.new(3,3,[1,2,3,4,5,6,7,8,9])
-	#den3 = Densa.new(3,3,[0,0,0,0,0,0,0,0,0])
-	#disp1= Dispersa.new(3,3,[0,1,2],[0,1,2],[4,12,30])
-	#disp2= Dispersa.new(3,3,[1,1,2],[0,1,2],[44,16,32])
-	
-	  #puts den1.to_s
-	  #puts den2.to_s
-
-	
-
-#puts "#{(disp1*den1).to_s}"
-
-
+endend

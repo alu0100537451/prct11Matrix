@@ -24,7 +24,6 @@ require "../lib/gcd.rb"
 # * metodo reciprocal
 # * metodo -@
 # * metodo <=>
-# * metodo coerce
 #
 class Racional
 	include Comparable
@@ -41,9 +40,6 @@ class Racional
         end
 	
 	def +(other)#Calcular la suma
-		if other.is_a? Integer
-			other = Racional.new(other,1)	
-		end
                 if (@denominador == other.denominador )
                         nume=@numerador + other.numerador
                         deno=@denominador
@@ -59,7 +55,7 @@ class Racional
         end
 
 
-	def -(other)#Calcular la resta	de un Racional
+	def -(other)#Calcular la resta	
                 if (@denominador == other.denominador )
                         nume=@numerador - other.numerador
                         deno=@denominador
@@ -77,8 +73,8 @@ class Racional
                 temp = Racional.new(nume/mcd, deno/mcd)
         end
 
-
-	 def * (other)#Calcular el producto de un Racional
+#####Calcular el producto
+	 def * (other)
                 nume = @numerador * other.numerador
                 deno = @denominador * other.denominador
                 mcd=gcd(nume,deno)
@@ -96,37 +92,30 @@ class Racional
         
         end
 
-
-	def num#####Devolver el numerador
+#####Devolver el numerador
+	def num 
 		@numerador
 	end
 
-
-	def denom #####Devolver el denominador
+#####Devolver el denominador
+	def denom 
 		@denominador		
 	end
 
-
-	def to_f#####Flotante
+#####Flotante
+	def to_f
 		flotante = numerador.to_f/denominador
 	end
 
-	
-	def abs#####Calcular el absoluto de la fraccion
+#####Calcular el absoluto de la fraccion	
+	def abs
 		absnum = numerador.abs
 		absdenom = denominador.abs
 		abs = Racional.new(absnum, absdenom)
 	end
 
-	def coerce(other)
-
-		if other.is_a? Fixnum
-			return [Racional.new(other,1), self]			
- 		end	
-	end
-
-
-	def % (other)#####Calcular el resto
+#####Calcular el resto
+	def % (other)
 		nume = @numerador * other.denominador
                 deno = @denominador * other.numerador
                 mcd  = gcd(nume,deno)
@@ -136,13 +125,13 @@ class Racional
 
 	end
 
-	
-	def reciprocal#####Calcular el reciproco de la fraccion
+#####Calcular el reciproco de la fraccion	
+	def reciprocal
 		Racional.new(@denominador,@numerador)
 	end
 
-
-	def -@#####Calcular el opuesto de la fraccion
+#####Calcular el opuesto de la fraccion
+	def -@
 		negado = Racional.new(-denominador, numerador)
 	end
 
@@ -151,8 +140,7 @@ class Racional
 			return (numerador.to_f/denominador)<=>(other.numerador.to_f/other.denominador)
 		else
 			false
-		end
+	end
        
-	
 end
 end

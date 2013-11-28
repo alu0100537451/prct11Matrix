@@ -1,0 +1,47 @@
+<<<<<<< HEAD
+# SparseMatrixProject
+
+TODO: Write a gem description
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+    gem 'SparseMatrixProject'
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install SparseMatrixProject
+
+## Usage
+
+TODO: Write usage instructions here
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
+=======
+      PRÁCTICA 10
+---------------------
+Aarón José Vera Cerdeña 
+
+Jacobo Saavedra Valdés
+
+1.Utilizamos la práctica 9 creamos la gema e implementamos la jerarquía de clases dentro de la misma,
+donde se heredaban las mismas.
+Para diseñar la estructura donde implementar los métodos que hiciesen operaciones entre operaciones
+densas y dispersas.
+2.En la parte Test Unit creamos un fichero tc_Matrices.rb donde realizamos las pruebas unitarias utilizando 
+el comando assert_equal para comprobar las operaciones entre las diferentes matrices.
+3.Rellenar el archivo spec implementando las operaciones entre las matrices.
+4.Implementar los nuevos métodos de máximo y mínimo para comprobar su funcionamiento con las mátrices.
+5.Subir la gema a RubyGems mediante el comando gem push <gema>.
+>>>>>>> 74a54b5fee97668eefe84bad85ac0e0a70ac726c

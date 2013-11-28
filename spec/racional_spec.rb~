@@ -94,5 +94,26 @@ describe "Maximo y minimo de matrices densas" do
         @matrizden2.minimo.should eq (1)
       end
   end
+#####################################################################################################################################################  
+  describe "Suma densa y dispersa racional" do
+    it "Suma densa y dispersa racional" do
+
+	
+	@racprb=Racional.new(1,2)
+
+	@matrizdis2 = Dispersa.new(3,3,[0,1,2],[0,1,2],[1,2,@racprb])
+	@matrizdenprb = Densa.new(3,3,[1,2,3,4,5,6,7,8,9])
+	@matrizdenprb2= Densa.new(3,3,[1,2,3,4,5,6,7,8,9])
+	@matrizdenprbrac = Densa.new(3,3,[1,@racprb,3,4,5,6,7,8,9])
+	@matrizdenprbrac2 = Densa.new(3,3,[1,@racprb,3,4,5,6,7,8,@racprb])
+	puts @matrizdis2.to_s
+	
+	(1+@racprb).should == Racional.new(3,2)
+	  
+	(@matrizdenprbrac + @matrizdenprb2).to_s.should eq("[[2, 5/2, 6], [8, 10, 12], [14, 16, 18]]")
+	(@matrizdenprb + @matrizdis2).to_s.should eq ("[[2, 2, 3], [4, 7, 6], [7, 8, 19/2]]")
+	(@matrizdis2 + @matrizdenprbrac2).to_s.should eq ("[[2, 2, 3], [4, 7, 6], [7, 8, 1/1]]")
+    end
+end
 end
 end

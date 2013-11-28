@@ -9,7 +9,7 @@
 require 'rubygems'
 require 'bundler/setup'
 require 'nokogiri'
-require "./lib/racional.rb"
+require "../lib/racional.rb"
 # === Clase Matrices
 #
 # Definición de la clase _Matrices_ compuesta por
@@ -74,7 +74,7 @@ class Matrices
 
                         # SELF Matriz Dispersa
                         if self.instance_of?Dispersa
-                                if other.instance_of?Densa
+                                if other.instance_of?Densa				  
                                         temp = Densa.new(self.filas, self.columnas, nil)
                                         0.upto(@filas-1) do |i| ##for i in (0...@filas.to_i)
                                                 0.upto(@columnas-1) do |j|##for j in (0...@columnas.to_i)

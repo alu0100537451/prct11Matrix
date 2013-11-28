@@ -24,7 +24,6 @@ require "../lib/gcd.rb"
 # * metodo reciprocal
 # * metodo -@
 # * metodo <=>
-# * metodo coerce
 #
 class Racional
 	include Comparable
@@ -41,9 +40,6 @@ class Racional
         end
 	
 	def +(other)#Calcular la suma
-		if other.is_a? Integer
-			other = Racional.new(other,1)	
-		end
                 if (@denominador == other.denominador )
                         nume=@numerador + other.numerador
                         deno=@denominador
@@ -118,13 +114,6 @@ class Racional
 		abs = Racional.new(absnum, absdenom)
 	end
 
-	def coerce(other)
-
-		if other.is_a? Fixnum
-			return [Racional.new(other,1), self]			
- 		end	
-	end
-
 
 	def % (other)#####Calcular el resto
 		nume = @numerador * other.denominador
@@ -151,8 +140,7 @@ class Racional
 			return (numerador.to_f/denominador)<=>(other.numerador.to_f/other.denominador)
 		else
 			false
-		end
+	end
        
-	
 end
 end
