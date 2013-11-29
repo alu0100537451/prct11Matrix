@@ -7,7 +7,7 @@
 #
 #
 #
-require "./lib/gcd.rb"
+require "../lib/gcd.rb"
 # === Clase Racional
 #
 # Definición de la clase _Racional_ compuesta por

@@ -12,8 +12,8 @@ require 'bundler/setup'
 require 'nokogiri'
 
 require "rspec"
-require "./lib/matriz.rb"
-require "./lib/racional.rb"
+require "../lib/matriz.rb"
+require "../lib/racional.rb"
 
 describe Matrices do##Aquí creamos las matrices densas y dispersas
   before :each do
@@ -113,6 +113,14 @@ describe "Maximo y minimo de matrices densas" do
 	(@matrizdenprbrac + @matrizdenprb2).to_s.should eq("[[2, 5/2, 6], [8, 10, 12], [14, 16, 18]]")
 	(@matrizdenprb + @matrizdis2).to_s.should eq ("[[2, 2, 3], [4, 7, 6], [7, 8, 19/2]]")
 	(@matrizdis2 + @matrizdenprbrac2).to_s.should eq ("[[2, 1/2, 3], [4, 7, 6], [7, 8, 1/1]]")
+	
+	
+	@matrizdenp = Densa.new(3,3,[1,2,3,4,5,6,7,8,9])
+	@matrizdenp.encontrar{|e| e*e>6}.to_s.should eq ("[0, 2]")
+	
+	
+	
+	
     end
 end
 end

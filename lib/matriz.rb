@@ -9,7 +9,7 @@
 require 'rubygems'
 require 'bundler/setup'
 require 'nokogiri'
-require "./lib/racional.rb"
+require "../lib/racional.rb"
 # === Clase Matrices
 #
 # Definición de la clase _Matrices_ compuesta por
@@ -454,6 +454,18 @@ def initialize(f,c,m)#Estructura de datos de la matriz densa
                 Matrices.new(mop)
 
         end
+	
+	def encontrar	  
+	  self.filas.times do |i|
+	    self.columnas.times do |j|
+	      if (yield (self.matriz[i][j]))
+	          return i,j		
+	      end
+	    end		
+	  end
+	  
+	  
+	end
 
       def minimo#Método que devuelve el elemento menor de la matriz
                 
